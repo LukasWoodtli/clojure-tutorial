@@ -49,3 +49,34 @@
 ;; Elements get added to the beginning of the list
 (conj '(1 2 3 4) 0) ;; (0 1 2 3 4)
 
+(first '(1 2 3 4))
+(second '(1 2 3 4))
+(rest '(1 2 3 4))
+
+
+((or + -) 1 2 3)
+
+
+(inc 1.1)
+
+(map inc [0 1 2 3])
+
+
+;; Clojure evaluates all function arguments recursively before passing them to the function
+(+ (inc 199) (/ 100 (- 7 2)))
+(+ (inc 199) (/ 100 5))
+(+ 200 20)
+220
+
+
+;; Overloading function by arg nmb with multiple-arity
+(defn x-chop 
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
+   (str "I " chop-type " chop " name "! Take that!"))
+  ([name]
+   (x-chop name "karate")))
+
+(x-chop "Kayne West" "slap")
+
+(x-chop "Kayne West")
