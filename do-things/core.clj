@@ -80,3 +80,21 @@
 (x-chop "Kayne West" "slap")
 
 (x-chop "Kayne West")
+
+
+
+
+;; Rest parameter: the ampersand indicates the "rest-param"
+(defn codger-communication
+  [whippersnapper]
+  (str "Get off my lawn, " whippersnapper "!!!"))
+(defn codger 
+ [& whippersnappers] ;; the ampersand indicates the "rest-param"
+ (map codger-communication whippersnappers))
+(codger "Billy" "Anne Marie" "The Incredible Bulk")
+
+
+
+
+
+
