@@ -95,6 +95,15 @@
 
 
 
+;; Destructuring: bind symbols to values within a collection
+(defn chooser
+  [[first-choice second-choice & unimportant-choices]]
+  (println (str "Your first choice is: " first-choice))
+  (println (str "Your second choice is: " second-choice))
+  (println (str "The rest: " (clojure.string/join ", " unimportant-choices)))
+)
+(chooser ["Marmalade", "Handsom Jack", "Pigpen", "Aquaman", "Blabla"])
+
 
 
 
