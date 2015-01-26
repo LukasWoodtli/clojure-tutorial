@@ -105,5 +105,25 @@
 (chooser ["Marmalade", "Handsom Jack", "Pigpen", "Aquaman", "Blabla"])
 
 
+;; let
+(let  [x 3] x)
+(def x 0)
+(let [x 1] x) ; =>1 
+(println x) ; =>0
+
+;; Reference existing bindings in let
+(def x 0)
+(let [y (inc x)] y) ; =>1
+(let [x (inc x)] x) ; =>1
+(println x)
+
+(def dalmatians-list
+  ["Pongo" "Perdita" "Puppy 1" "Puppy 2"]) ;; and 97 more...
+(let [dalmatians (take 2 dalmatians-list)] dalmatians)
+;; rest-params in let
+(let [[pongo & dalmatians] dalmatians-list]
+  [pongo dalmatians]) ;; => ["Pongo" ("Perdita" "Puppy 1" "Puppy 2")]
+
+
 
 
