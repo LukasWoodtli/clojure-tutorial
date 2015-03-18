@@ -124,6 +124,17 @@
 (let [[pongo & dalmatians] dalmatians-list]
   [pongo dalmatians]) ;; => ["Pongo" ("Perdita" "Puppy 1" "Puppy 2")]
 
+(def x 0)
+(let [x 1] x)
+(println x)
+
+(def x 0)
+(let [x (inc x)] x)
+(println x)
 
 
-
+(loop [iteration 0]
+  (println (str "Iteration " iteration))
+  (if (> iteration 3)
+    (println "Goodbye!")
+    (recur (inc iteration))))
