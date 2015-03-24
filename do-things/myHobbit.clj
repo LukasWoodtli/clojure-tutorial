@@ -17,11 +17,9 @@
          final-body-parts []]
     (if (empty? remaining-asym-parts)
       final-body-parts
-      (let [[part & remaining] remaining-asym-parts
-            final-body-parts (conj final-body-parts part)]
-        (if (needs-matching-part? part)
-          (recur remaining (conj final-body-parts (make-matching-part part))) 
-          (recur remaining final-body-parts))))))
+      (if (needs-matching-part? (first remaining-asym-parts))
+        (recur (rest remaining-asym-parts) (conj final-body-parts (make-matching-part (first remaining-asym-parts)))) 
+        (recur (rest remaining-asym-parts) remaining-asym-parts)))))
 
 
 (println (symetrize-parts asym-hobbit-body-parts))
