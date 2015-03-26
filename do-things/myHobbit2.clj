@@ -13,9 +13,10 @@
          sym-parts [] ]
     (if (empty? asym-list) 
       sym-parts
-      (if (needs-matching-part? (first asym-list))
-        (recur (rest asym-list) (conj  (conj sym-parts (first asym-list)) (make-matching-part (first asym-list))))
-        (recur (rest asym-list) (conj sym-parts (first asym-list))))))) 
+      (let [[part & rest-parts] asym-list]
+       (if (needs-matching-part? part)
+         (recur rest-parts (conj  (conj sym-parts part) (make-matching-part part)))
+         (recur rest-parts (conj sym-parts part))))))) 
 
 
 
