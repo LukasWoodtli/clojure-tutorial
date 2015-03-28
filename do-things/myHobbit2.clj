@@ -1,12 +1,14 @@
 
 
-(def asym-parts ["left-arm" "head" "left-leg"])
+(def asym-parts [{:name "left-arm" :size 3} 
+                 {:name "head" :size 5}
+                 {:name "left-leg" :size 4}])
 
 (defn needs-matching-part? [part]
-  (re-find #"^left-" part))
+  (re-find #"^left-" (:name part)))
 
 (defn make-matching-part [part]
-  (clojure.string/replace part "left-" "right-"))
+  {:name (clojure.string/replace (:name part) "left-" "right-") :size (:size part)})
 
 (defn create-hobbit [asym-body-parts]
   (loop [asym-list asym-body-parts
@@ -20,6 +22,6 @@
 
 
 
-(println (create-hobbit asym-parts))
 
+(println (create-hobbit asym-parts))
     
