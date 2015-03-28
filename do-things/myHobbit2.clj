@@ -26,7 +26,7 @@
 (defn make-matching-part [part]
   {:name (clojure.string/replace (:name part) "left-" "right-") :size (:size part)})
 
-(defn create-hobbit [asym-body-parts]
+(defn symmetrize-body-parts [asym-body-parts]
   (loop [asym-list asym-body-parts
          sym-parts [] ]
     (if (empty? asym-list) 
@@ -39,5 +39,5 @@
 
 
 
-(println (create-hobbit asym-hobbit-body-parts))
+(println (symmetrize-body-parts asym-hobbit-body-parts))
     
