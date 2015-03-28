@@ -27,15 +27,12 @@
   {:name (clojure.string/replace (:name part) "left-" "right-") :size (:size part)})
 
 (defn symmetrize-body-parts [asym-body-parts]
-  (loop [asym-list asym-body-parts
-         sym-parts [] ]
-    (if (empty? asym-list) 
-      sym-parts
-      (let [[part & rest-parts] asym-list]
-       (if (needs-matching-part? part)
-         (recur rest-parts (conj  (conj sym-parts part) (make-matching-part part)))
-         (recur rest-parts (conj sym-parts part))))))) 
-
+  (reduce (fn [final-body-parts part] 
+            (let [final-body-parts (conj final-body-parts part)]
+                 (if (needs-matching-part? part) 
+                   (conj final-body-parts (make-matching-part part))
+                   final-body-parts)))
+          [] asym-body-parts))
 
 
 
